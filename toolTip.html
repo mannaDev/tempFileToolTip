@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<style>
+            button{
+                width: 100px;
+                height: 50px;
+            }
+
+            .tooltipStyle{
+                position: absolute;
+                z-index: 99;
+                padding: 5px 10px;
+                background: rgba(50,60,114,0.75);
+                color: cornsilk;
+            }
+        </style>
+	</head>
+	<body>
+		<button id = "myButton" alt = "ToolTip ToolTip ToolTip ToolTip ToolTip !!">OK</button>
+	</body>
+</html>
+
+
+<script>
+	document.getElementById("myButton").onmouseover = function(){
+		/*var wrapper = document.createElement("div");*/
+        if(document.getElementById("buttonTip") == null){
+            var toolTip = document.createElement("div");
+            toolTip.setAttribute("id","buttonTip");
+            var toolTipContent = document.createElement("span");
+            toolTipContent.innerHTML = document.getElementById("myButton").getAttribute("alt");
+
+            toolTip.appendChild(toolTipContent);
+            toolTip.className = "tooltipStyle";
+            document.getElementById("myButton").appendChild(toolTip);
+        }
+        if(document.getElementById("buttonTip") != null)
+            document.getElementById("buttonTip").style.display = "block";
+	};
+    
+    document.getElementById("myButton").onmouseout = function(){
+        document.getElementById("buttonTip").style.display = "none";
+    }
+</script>
